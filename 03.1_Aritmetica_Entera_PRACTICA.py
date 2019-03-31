@@ -74,7 +74,20 @@ def IntegerArithmeticCode(mensaje,alfabeto,frecuencias):
         u=int(ub,2)
         l=int(lb,2)      
         
-    ,,,
+    
+    lcola="{0:b}".format(l)
+    result=result+lcola[0]
+    lcola=lcola[1:]
+
+    if result[len(result)-1] == "0":
+        comp="1"
+    else :
+        comp="0"
+
+    for x in range(0,scale3):
+        result=result+comp
+    
+    result=result+lcola
     
     
 #%%
