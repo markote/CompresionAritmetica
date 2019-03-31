@@ -22,6 +22,59 @@ T: suma total de frecuencias
 
 
 def IntegerArithmeticCode(mensaje,alfabeto,frecuencias):
+    T=sum(frecuencias)
+    df=dict()
+    tmp=zip(alfabeto,frecuencias)
+    i = 0
+    for t in tmp:
+        df[t[0]]=(t[1],i)
+        i+=1
+    
+    i = 0
+    while not (pow(2,i) > 4*T):
+        i+=1
+    bits=i
+    R=pow(2,i)
+
+    l=0
+    u=R-1
+    result=""
+    scale3 = 0
+    for c in mensaje:
+        freq,it=df[c]
+        l=l+int((u-l+1)*sum(frecuencias[0:it])/T)
+        u=l-1+int((u-l+1)*sum(frecuencias[0:it+1]))/T)
+        ub="{0:b}".format(u)
+        lb="{0:b}".format(l)
+        cond=true
+        while(cond):
+            cond=false
+            if ub[0]==lb[0]:
+                cond=true
+                result=result+ub[0]
+                ub=ub+0
+                lb=lb+1
+                ub=ub[1:]
+                lb=lb[1:]
+                if result[len(result)-1] == "0":
+                    comp="1"
+                else :
+                    comp="0"
+                while scale3>0:
+                    result=result+comp
+                    scale3 = scale3-1
+             if ub[1]=="0" and lb[1]=="1":
+                 cond=true
+                 scale3=scale3+1
+                 ub[1]="1"
+                 lb[1]="0"
+                 ub=ub[1:]+"1"
+                 lb=lb[1:]+"0"
+                 
+        u=int(ub,2)
+        l=int(lb,2)      
+        
+    ,,,
     
     
 #%%
